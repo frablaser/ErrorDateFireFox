@@ -26,8 +26,6 @@ namespace BlazorApp1.Data
         {
             return !(date == null || (date < DateTime.Now.AddYears(-99) || date > DateTime.Now.AddYears(-18)));
         }
-
-
     }
 
 }
