@@ -1,0 +1,43 @@
+﻿@page "/"
+
+@using FluentValidation;
+@using Data;
+
+<h1>Input date bug on Firefox</h1>
+
+<EditForm Model=@person>
+
+    <FluentValidator Validator="Validator"></FluentValidator>
+
+    <div class="form-group">
+        <label for="PersonName">Name</label>
+        <InputText id="PersonName" class="form-control" @bind-Value="person.PersonName"></InputText>
+        <ValidationMessage For="() => person.PersonName"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <label for="Birthdate">Age</label>
+        <InputDate class="form-control" id="Birthdate" @bind-Value="person.PersonBirthDate" required />
+        <ValidationMessage For="() => person.PersonBirthDate" @Required="true" />
+    </div>
+    <div class="form-group">
+        <ValidationSummary></ValidationSummary>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </div>
+</EditForm>
+
+
+
+@code{
+
+    PersonValidator Validator = new PersonValidator();
+
+    BlazorApp1.Data.Person person = new Data.Person();
+
+
+
+}
